@@ -1,9 +1,6 @@
 import PostLayout from "../components/posts/PostLayout";
 import { Metadata, ResolvingMetadata } from "next";
-import { getAllSlugs, getPostAndMorePosts } from "../lib/api";
-import MoreStories from "../components/MoreStories";
-import { getPosts } from "../page";
-import Container from "../components/Container";
+import { getAllSlugs, getPostAndMorePosts, getLatestPosts } from "../lib/api";
 
 export default async function Post({ params }: any) {
   const { post, posts } = await getPost({ params });
@@ -59,3 +56,9 @@ async function getPost({ params }: any) {
 }
 
 export const dynamicParams = false;
+
+async function getPosts() {
+  const latestPosts = await getLatestPosts();
+
+  return latestPosts;
+}

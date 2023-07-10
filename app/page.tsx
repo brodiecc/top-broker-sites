@@ -16,7 +16,7 @@ export default async function Home() {
   );
 }
 
-export async function getPosts() {
+async function getPosts() {
   const latestPosts = await getLatestPosts();
 
   return latestPosts;
