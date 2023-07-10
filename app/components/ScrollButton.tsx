@@ -1,7 +1,7 @@
 "use client";
 import { ChevronUpIcon } from "@heroicons/react/24/outline";
 
-export default function scrollButton() {
+export default function ScrollButton() {
   const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
 
   function scrollToTop() {
