@@ -34,9 +34,10 @@ export default function Hero() {
           <Image
             src="/mantrading.jpeg"
             alt="A man trading on his computer"
-            layout="fill"
-            objectFit="cover"
-            className="aspect-w-3 aspect-h-2 bg-gray-50"
+            fill={true}
+            priority={true}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="aspect-w-3 aspect-h-2 bg-gray-50 object-cover"
           />
         </div>
       </div>
