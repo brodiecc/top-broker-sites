@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AnimateUnderline } from "../largeStyles";
+import { AnimateUnderline } from "../LargeStyles";
 
 export default function PostNav({ headings }: any) {
   //Map over the headings and create a list of links to each heading
