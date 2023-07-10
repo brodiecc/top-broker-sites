@@ -1,13 +1,23 @@
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Blog from "./components/Blog";
+import MoreStories from "./components/MoreStories";
+import { getLatestPosts } from "./lib/api";
+import { Metadata } from "next";
 
-export default function Home() {
+export default async function Home() {
+  const latestPosts = await getPosts();
+
   return (
-    <main className=" bg-white">
+    <main>
       <Hero />
       <About />
-      <Blog />
+      <MoreStories posts={latestPosts} />
     </main>
   );
+}
+
+export async function getPosts() {
+  const latestPosts = await getLatestPosts();
+
+  return latestPosts;
 }
