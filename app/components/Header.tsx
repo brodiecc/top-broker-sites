@@ -4,14 +4,16 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimateUnderline } from "./largeStyles";
 
 const navigation = [
   { name: "About us", href: "#about" },
-  { name: "Broker Reviews", href: "#" },
-  { name: "News", href: "#" },
+  { name: "Learn", href: "/category/beginner-trading" },
+  { name: "Broker Reviews", href: "/category/broker-review" },
+  { name: "Strategies", href: "/category/trading-strategy" },
 ];
 
-export default function Example() {
+export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -27,9 +29,9 @@ export default function Example() {
               alt=""
               height={32}
               width={32}
-              className="h-8 w-auto mr-2"
+              className="h-8 w-8 mr-2"
             />
-            <span className="font-semibold text-lg tracking-tight">
+            <span className="font-semibold text-lg tracking-tight text-gray-900">
               Top Broker Sites
             </span>
           </Link>
@@ -46,13 +48,15 @@ export default function Example() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <a
+            <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-700 hover:text-blue-900 transition-colors duration-200"
+              className={AnimateUnderline(
+                "text-sm font-semibold leading-6 text-gray-700 after:bg-gray-700"
+              )}
             >
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -79,7 +83,7 @@ export default function Example() {
                 alt=""
                 height={32}
                 width={32}
-                className="h-8 w-auto mr-2"
+                className="mr-2 h-8 w-8"
               />
               <span className="font-semibold text-lg tracking-tight">
                 Top Broker Sites
