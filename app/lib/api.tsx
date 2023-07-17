@@ -109,7 +109,7 @@ export async function getLatestPosts() {
   return data?.posts.edges;
 }
 
-export async function getPostAndMorePosts(slug: string) {
+export async function getMainPost(slug: any) {
   const data = await fetchAPI(
     `
     fragment AuthorFields on User {
@@ -168,15 +168,7 @@ export async function getPostAndMorePosts(slug: string) {
               }
             }
           }
-        }
-        
-      }
-      posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
-        edges {
-          node {
-            ...PostFields
-          }
-        }
+        }    
       }
     }
   `,
@@ -187,12 +179,76 @@ export async function getPostAndMorePosts(slug: string) {
       },
     }
   );
-  // Filter out the main post
-  data.posts.edges = data.posts.edges.filter(
-    ({ node }: { node: { slug: string } }) => node.slug !== slug
-  );
-  // If there are still 3 posts, remove the last one
-  if (data.posts.edges.length > 2) data.posts.edges.pop();
-
   return data;
+}
+
+export async function getMorePosts(slug: string, category: string) {
+  const data = await fetchAPI(
+    `
+    fragment AuthorFields on User {
+      name
+      firstName
+      lastName
+      avatar {
+        url
+      }
+    }
+    fragment PostFields on Post {
+      title
+      excerpt
+      slug
+      date
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      author {
+        node {
+          ...AuthorFields
+        }
+      }
+      categories {
+        edges {
+          node {
+            name
+            slug
+          }
+        }
+      }
+      tags {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+    }
+    query PostsByCategory {
+      posts(
+        first: 3
+        where: {orderby: {field: DATE, order: DESC}, categoryName: "Trading Strategy"}
+      ) {
+        edges {
+          node {
+            ...PostFields
+          }
+        }
+      }
+    }
+  `,
+    {
+      variables: {
+        categoryName: category,
+      },
+    }
+  );
+  // // Filter out the main post
+  // data.posts.edges = data.posts.edges.filter(
+  //   ({ node }: { node: { slug: string } }) => node.slug !== slug
+  // );
+  // // If there are still 3 posts, remove the last one
+  // if (data.posts.edges.length > 2) data.posts.edges.pop();
+  // console.log(data?.posts.edges[0].node.categories.edges[0].node.slug);
+  return data?.posts.edges;
 }

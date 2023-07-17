@@ -19,9 +19,9 @@ const features = [
     icon: ClipboardIcon,
   },
   {
-    name: "The latest news",
+    name: "Trading Strategies",
     description:
-      "Our regularly published articles cover various trading and investing topics, serving as a valuable resource for users seeking industry updates, strategies, and expert perspectives.",
+      "Discover a wide range of effective trading strategies that can enhance your investment decisions and maximize your potential for success",
     icon: NewspaperIcon,
   },
   {

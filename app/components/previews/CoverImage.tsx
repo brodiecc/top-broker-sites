@@ -5,16 +5,15 @@ import Link from "next/link";
 export default function CoverImage({ title, coverImage, slug }: any) {
   const image = (
     <Image
-      fill={true}
+      width={2000}
+      height={1000}
       alt={coverImage.node.altText || title}
       src={coverImage?.node.sourceUrl}
-      className={cn("shadow-small rounded-2xl bg-gray-100 object-cover", {
-        "hover:shadow-medium transition-shadow duration-200": slug,
-      })}
+      className="rounded-2xl bg-gray-100 "
     />
   );
   return (
-    <div className="sm:mx-0 h-64">
+    <div className="sm:mx-0 ">
       {slug ? (
         <Link href={`/${slug}`} aria-label={title}>
           {image}

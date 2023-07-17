@@ -16,7 +16,7 @@ export default function PostBody({ content }: any) {
 
   return (
     <div className="mx-auto flex flex-row">
-      <div className="w-1/4 sticky top-0 h-screen hidden lg:block">
+      <div className="w-1/4 sticky top-0 h-screen hidden lg:block overflow-scroll">
         {/* Vertical nav menu for sections in the article */}
         <PostNav headings={headings} />
       </div>

@@ -1,6 +1,12 @@
 import PostLayout from "../components/posts/PostLayout";
 import { Metadata, ResolvingMetadata } from "next";
-import { getAllSlugs, getPostAndMorePosts, getLatestPosts } from "../lib/api";
+import {
+  getAllSlugs,
+  getMainPost,
+  getMorePosts,
+  getLatestPosts,
+} from "../lib/api";
+import SimilarStories from "../components/SimilarStories";
 
 export default async function Post({ params }: any) {
   const { post, posts } = await getPost({ params });
@@ -9,6 +15,7 @@ export default async function Post({ params }: any) {
     <main>
       <div className="my-24 mx-auto sm:px-6 md:px-0">
         <PostLayout post={post} />
+        <SimilarStories posts={posts} />
       </div>
     </main>
   );
@@ -23,7 +30,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // fetch data
-  const data = await getPostAndMorePosts(params?.slug);
+  const data = await getMainPost(params?.slug);
   const post = data.post;
 
   // optionally access and extend (rather than replace) parent metadata
@@ -47,11 +54,16 @@ export async function generateStaticParams() {
 }
 
 async function getPost({ params }: any) {
-  const data = await getPostAndMorePosts(params?.slug);
+  const postData = await getMainPost(params?.slug);
+
+  const postsData = await getMorePosts(
+    params?.slug,
+    postData.post.categories.edges[0].node.name
+  );
 
   return {
-    post: data.post,
-    posts: data.posts,
+    post: postData.post,
+    posts: postsData,
   };
 }
 
