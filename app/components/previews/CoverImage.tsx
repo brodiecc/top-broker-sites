@@ -3,13 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function CoverImage({ title, coverImage, slug }: any) {
+  if (!coverImage?.node) return null;
   const image = (
     <Image
-      width={2000}
-      height={1000}
+      width={400}
+      height={300}
       alt={coverImage.node.altText || title}
       src={coverImage?.node.sourceUrl}
-      className="rounded-2xl bg-gray-100 "
+      className="rounded-2xl bg-gray-100"
     />
   );
   return (

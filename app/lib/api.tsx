@@ -67,11 +67,14 @@ export async function getAllSlugs() {
 }
 
 // export async function getAllPostsForHome(preview: any) {
-export async function getLatestPosts() {
+export async function getLatestPosts(limit: number) {
+  if (limit == null) {
+    limit = 3;
+  }
   const data = await fetchAPI(
     `
-    query AllPosts {
-      posts(first: 3, where: {orderby: {field: DATE, order: DESC}}) {
+    query AllPosts($limit: Int) {
+      posts(first: $limit, where: {orderby: {field: DATE, order: DESC}}) {
         edges {
           node {
             title
@@ -81,6 +84,10 @@ export async function getLatestPosts() {
             featuredImage {
               node {
                 sourceUrl
+                mediaDetails {
+                  height
+                  width
+                }
               }
             }
             categories {
@@ -103,7 +110,12 @@ export async function getLatestPosts() {
         }
       }
     }
-  `
+  `,
+    {
+      variables: {
+        limit: limit,
+      },
+    }
   );
 
   return data?.posts.edges;
@@ -128,6 +140,10 @@ export async function getMainPost(slug: any) {
       featuredImage {
         node {
           sourceUrl
+          mediaDetails {
+            height
+            width
+          }
         }
       }
       author {
@@ -182,7 +198,11 @@ export async function getMainPost(slug: any) {
   return data;
 }
 
-export async function getMorePosts(slug: string, category: string) {
+export async function getMorePosts(
+  slug: string,
+  category: string,
+  howManyPosts: number
+) {
   const data = await fetchAPI(
     `
     fragment AuthorFields on User {
@@ -200,7 +220,12 @@ export async function getMorePosts(slug: string, category: string) {
       date
       featuredImage {
         node {
+          altText
           sourceUrl
+          mediaDetails {
+            height
+            width
+          }
         }
       }
       author {
@@ -224,10 +249,10 @@ export async function getMorePosts(slug: string, category: string) {
         }
       }
     }
-    query PostsByCategory {
+    query PostsByCategory($categoryName: String!, $limit: Int!) {
       posts(
-        first: 3
-        where: {orderby: {field: DATE, order: DESC}, categoryName: "Trading Strategy"}
+        first: $limit
+        where: {orderby: {field: DATE, order: DESC}, categoryName: $categoryName}
       ) {
         edges {
           node {
@@ -240,6 +265,7 @@ export async function getMorePosts(slug: string, category: string) {
     {
       variables: {
         categoryName: category,
+        limit: howManyPosts,
       },
     }
   );

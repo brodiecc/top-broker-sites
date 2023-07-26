@@ -7,7 +7,7 @@ import Link from "next/link";
 import { AnimateUnderline } from "./LargeStyles";
 
 const navigation = [
-  { name: "About us", href: "#about" },
+  { name: "About us", href: "/#about" },
   { name: "Learn", href: "/category/beginner-trading" },
   { name: "Broker Reviews", href: "/category/broker-review" },
   { name: "Strategies", href: "/category/trading-strategy" },

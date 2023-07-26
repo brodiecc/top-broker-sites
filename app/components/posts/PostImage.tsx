@@ -2,11 +2,12 @@ import cn from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function PostImage({ title, coverImage, slug }: any) {
+export default function PostImage({ title, coverImage }: any) {
+  if (!coverImage?.node) return null;
   return (
     <Image
-      width={800}
-      height={450}
+      width={coverImage.node.mediaDetails.width || 1000}
+      height={coverImage.node.mediaDetails.height || 500}
       alt={coverImage.node.altText || title}
       src={coverImage?.node.sourceUrl}
       className="w-full rounded-lg bg-gray-100 object-cover aspect-video"

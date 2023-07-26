@@ -58,7 +58,8 @@ async function getPost({ params }: any) {
 
   const postsData = await getMorePosts(
     params?.slug,
-    postData.post.categories.edges[0].node.name
+    postData.post.categories.edges[0].node.name,
+    3
   );
 
   return {
@@ -70,7 +71,7 @@ async function getPost({ params }: any) {
 export const dynamicParams = false;
 
 async function getPosts() {
-  const latestPosts = await getLatestPosts();
+  const latestPosts = await getLatestPosts(3);
 
   return latestPosts;
 }
