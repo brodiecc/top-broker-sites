@@ -6,11 +6,17 @@ import {
 } from "@heroicons/react/24/outline";
 
 const features = [
+  // {
+  //   name: "Comparison tool",
+  //   description:
+  //     "We provide a comprehensive comparison tool that allows you to easily compare different brokers based on your preferences.",
+  //   icon: ChartBarIcon,
+  // },
   {
-    name: "Comparison tool",
+    name: "Learn",
     description:
-      "We provide a comprehensive comparison tool that allows you to easily compare different brokers based on your preferences.",
-    icon: ChartBarIcon,
+      "Our educational resources will help you learn the basics of trading and investing, as well as advanced strategies to help you succeed.",
+    icon: ClipboardIcon,
   },
   {
     name: "Broker reviews",
@@ -34,7 +40,7 @@ const features = [
 
 export default function About() {
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div id="about" className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
           <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">

@@ -59,14 +59,14 @@ export default function Header() {
             </Link>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             href="/compare"
             className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-500 hover:bg-blue-600"
           >
             Compare
           </Link>
-        </div>
+        </div> */}
       </nav>
       <Dialog
         as="div"
@@ -111,14 +111,14 @@ export default function Header() {
                   </a>
                 ))}
               </div>
-              <div className="py-6">
+              {/* <div className="py-6">
                 <Link
                   href="/compare"
                   className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-500 hover:bg-blue-600"
                 >
                   Compare
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </Dialog.Panel>

@@ -9,7 +9,7 @@ export default async function Home() {
 
   return (
     <main>
-      <Hero />
+      {/* <Hero /> */}
       <About />
       <MoreStories posts={latestPosts} />
     </main>
@@ -17,7 +17,7 @@ export default async function Home() {
 }
 
 async function getPosts() {
-  const latestPosts = await getLatestPosts();
+  const latestPosts = await getLatestPosts(3);
 
   return latestPosts;
 }

@@ -3,6 +3,7 @@ import PostsList from "./PostsList";
 import CoverImage from "../../previews/CoverImage";
 import Link from "next/link";
 import Date from "../../previews/Date";
+import { socials } from "../../Footer";
 
 export default async function CategoryLayout({
   category,
@@ -24,9 +25,9 @@ export default async function CategoryLayout({
         <PostsList posts={posts} />
       </div>
       <div className="col-span-1">
-        <h1 className="my-6 text-gray-800 text-2xl  font-bold tracking-tighter leading-tight md:leading-none mb-8 text-center">
+        <h2 className="my-6 text-gray-800 text-2xl  font-bold tracking-tighter leading-tight md:leading-none mb-8 text-center">
           Recent Articles
-        </h1>
+        </h2>
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
         {/* Map newposts into a column of post previews with the coverImage on the left and the title and date on the right */}
         <div className="flex-col">
@@ -54,6 +55,21 @@ export default async function CategoryLayout({
               </div>
               <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
             </>
+          ))}
+        </div>
+        <h2 className="my-6 text-gray-800 text-2xl  font-bold tracking-tighter leading-tight md:leading-none mb-8 text-center">
+          Follow Us
+        </h2>
+        <div className="flex flex-row justify-around px-4">
+          {socials.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="text-gray-500 hover:text-gray-600"
+            >
+              <span className="sr-only">{item.name}</span>
+              <item.icon className="h-6 w-6" aria-hidden="true" />
+            </a>
           ))}
         </div>
       </div>
