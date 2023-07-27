@@ -40,7 +40,9 @@ export async function generateMetadata(
     title: post.title,
     description: stripHTML(post.excerpt),
     openGraph: {
-      images: [post.featuredImage?.node.sourceUrl, ...previousImages],
+      images: post.featuredImage
+        ? [post.featuredImage.node.sourceUrl, ...previousImages]
+        : previousImages,
     },
   };
 }
