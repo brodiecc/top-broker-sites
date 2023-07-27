@@ -1,9 +1,9 @@
-import { getMorePosts, getLatestPosts } from "../../../lib/api";
+import { getMorePosts, getLatestPosts } from "../../lib/api";
 import PostsList from "./PostsList";
-import CoverImage from "../../previews/CoverImage";
+import CoverImage from "../previews/CoverImage";
 import Link from "next/link";
-import Date from "../../previews/Date";
-import { socials } from "../../Footer";
+import Date from "../previews/Date";
+import { socials } from "../Footer";
 
 export default async function CategoryLayout({
   category,
@@ -78,7 +78,7 @@ export default async function CategoryLayout({
 }
 
 async function getPosts(category: string) {
-  const MorePosts = await getMorePosts("", category, 5);
+  const MorePosts = await getMorePosts("", category, 20);
 
   return MorePosts;
 }

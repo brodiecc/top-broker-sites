@@ -1,8 +1,8 @@
-import PostImage from "../PostImage";
-import Date from "../../previews/Date";
+import PostImage from "../posts/PostImage";
+import Date from "../previews/Date";
 import Link from "next/link";
 
-import CoverImage from "../../previews/CoverImage";
+import CoverImage from "../previews/CoverImage";
 
 export default function PostsList({ posts }: any) {
   const firstPost = posts.shift();
