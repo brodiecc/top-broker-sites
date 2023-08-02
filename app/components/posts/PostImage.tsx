@@ -1,6 +1,4 @@
-import cn from "classnames";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function PostImage({ title, coverImage }: any) {
   if (!coverImage?.node) return null;
