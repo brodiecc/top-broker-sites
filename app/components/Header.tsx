@@ -7,10 +7,10 @@ import Link from "next/link";
 import { AnimateUnderline } from "./LargeStyles";
 
 const navigation = [
-  { name: "About us", href: "/#about" },
+  // { name: "About us", href: "/#about" },
   { name: "Learn", href: "/category/beginner-trading" },
   { name: "Broker Reviews", href: "/category/broker-review" },
-  { name: "Strategies", href: "/category/trading-strategy" },
+  { name: "Trading Strategies", href: "/category/trading-strategy" },
 ];
 
 export default function Header() {
@@ -31,7 +31,7 @@ export default function Header() {
               width={32}
               className="h-8 w-8 mr-2"
             />
-            <span className="font-semibold text-lg tracking-tight text-gray-900">
+            <span className="font-semibold text-2xl tracking-tight text-gray-900">
               Top Broker Sites
             </span>
           </Link>
@@ -52,7 +52,7 @@ export default function Header() {
               key={item.name}
               href={item.href}
               className={AnimateUnderline(
-                "text-sm font-semibold leading-6 text-gray-700 after:bg-gray-700"
+                "text-md font-semibold leading-6 text-gray-700 after:bg-gray-700"
               )}
             >
               {item.name}
