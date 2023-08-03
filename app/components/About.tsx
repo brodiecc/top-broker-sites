@@ -26,14 +26,14 @@ const features = [
     description:
       "Our reviews provide valuable insights into brokers' features, trading platforms, account types, regulatory compliance, customer service, and more.",
     icon: ClipboardIcon,
-    href: "/category/beginner-trading",
+    href: "/category/broker-review",
   },
   {
     name: "Trading Strategies",
     description:
       "Discover a wide range of effective trading strategies that can enhance your investment decisions and maximize your potential for success",
     icon: NewspaperIcon,
-    href: "/category/beginner-trading",
+    href: "/category/trading-strategy",
   },
   {
     name: "User-friendly interface",

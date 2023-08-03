@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import ScrollButton from "./components/ScrollButton";
 import { Metadata } from "next";
 import clsx from "clsx";
+import GoogleAnalytics from "./GoogleAnalytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <GoogleAnalytics />
       <body className={clsx(inter.className, "bg-white")}>
         <Header />
         {children}
