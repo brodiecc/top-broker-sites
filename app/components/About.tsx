@@ -66,7 +66,7 @@ export default function About() {
                   href={feature.href}
                   className="border border-white hover:border-gray-500 rounded-lg p-4"
                 >
-                  <div className="relative pl-16">
+                  <dl className="relative pl-16">
                     <dt className="text-base font-semibold leading-7 text-gray-900">
                       <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
                         <feature.icon
@@ -79,14 +79,14 @@ export default function About() {
                     <dd className="mt-2 text-base leading-7 text-gray-600">
                       {feature.description}
                     </dd>
-                  </div>
+                  </dl>
                 </Link>
               ) : (
                 <div
                   key={feature.name}
                   className="border border-white rounded-lg p-4"
                 >
-                  <div className="relative pl-16">
+                  <dl className="relative pl-16">
                     <dt className="text-base font-semibold leading-7 text-gray-900">
                       <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
                         <feature.icon
@@ -99,7 +99,7 @@ export default function About() {
                     <dd className="mt-2 text-base leading-7 text-gray-600">
                       {feature.description}
                     </dd>
-                  </div>
+                  </dl>
                 </div>
               )
             )}
