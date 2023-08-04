@@ -9,7 +9,7 @@ export default async function NotFound() {
     <div>
       <Container className="flex justify-center align-middle my-24 flex-col text-center">
         <h2 className="text-4xl my-8 font-bold">
-          Oops... This page doesn't exist.
+          Oops... This page doesn&apos;t exist.
         </h2>
         <p className="text-lg">Try one of these:</p>
       </Container>
