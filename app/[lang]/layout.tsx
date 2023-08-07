@@ -6,19 +6,28 @@ import ScrollButton from "./components/ScrollButton";
 import { Metadata } from "next";
 import clsx from "clsx";
 import GoogleAnalytics from "./GoogleAnalytics";
+import { i18n } from "../../i18n-config";
+import { getDictionary } from "@/get-dictionary";
+import { Locale } from "../../i18n-config";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ lang: locale }));
+}
+
 export default function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { lang: Locale };
 }) {
   return (
-    <html lang="en">
+    <html lang={params.lang}>
       <GoogleAnalytics />
       <body className={clsx(inter.className, "bg-white")}>
-        <Header />
+        <Header lang={params.lang} />
         {children}
         <Footer />
       </body>

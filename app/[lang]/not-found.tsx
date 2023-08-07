@@ -14,13 +14,13 @@ export default async function NotFound() {
         <p className="text-lg">Try one of these:</p>
       </Container>
 
-      <MoreStories posts={latestPosts} />
+      <MoreStories posts={latestPosts} lang="en" />
     </div>
   );
 }
 
 async function getPosts() {
-  const latestPosts = await getLatestPosts(3);
+  const latestPosts = await getLatestPosts(3, "en");
 
   return latestPosts;
 }

@@ -4,7 +4,7 @@ import {
   NewspaperIcon,
   GlobeAltIcon,
 } from "@heroicons/react/24/outline";
-
+import { getDictionary } from "@/get-dictionary";
 import Link from "next/link";
 
 const features = [
@@ -15,95 +15,107 @@ const features = [
   //   icon: ChartBarIcon,
   // },
   {
-    name: "Learn Trading",
-    description:
-      "Our educational resources will help you learn the basics of trading and investing, as well as advanced strategies to help you succeed.",
+    name: "learn",
+    description: "learnDescription",
     icon: ClipboardIcon,
     href: "/category/beginner-trading",
   },
   {
-    name: "Broker reviews",
-    description:
-      "Our reviews provide valuable insights into brokers' features, trading platforms, account types, regulatory compliance, customer service, and more.",
+    name: "brokerReviews",
+    description: "brokerReviewsDescription",
     icon: ClipboardIcon,
     href: "/category/broker-review",
   },
   {
-    name: "Trading Strategies",
-    description:
-      "Discover a wide range of effective trading strategies that can enhance your investment decisions and maximize your potential for success",
+    name: "tradingStrategies",
+    description: "tradingStrategiesDescription",
     icon: NewspaperIcon,
     href: "/category/trading-strategy",
   },
   {
-    name: "User-friendly interface",
-    description:
-      "Our website is designed to be user-friendly and easy to navigate, allowing you to quickly find the information you need.",
+    name: "userInterface",
+    description: "userInterfaceDescription",
     icon: GlobeAltIcon,
   },
 ];
 
-export default function About() {
+export default async function About({ lang }: any) {
+  const dictionary = await getDictionary(lang);
+
   return (
     <div id="about" className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
           <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            Looking for a broker? <br /> Look no further.
+            {dictionary.about.titleTop} <br /> {dictionary.about.titleBottom}
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            We help you navigate the complex world of online trading and
-            investing. Get access to expert reviews and ratings of the top
-            brokers in the industry.
+            {dictionary.about.description}
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+          <div className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
             {features.map((feature) =>
               feature.href ? (
                 <Link
                   key={feature.name}
-                  href={feature.href}
+                  href={`/${lang}${feature.href}`}
                   className="border border-white hover:border-gray-500 rounded-lg p-4"
                 >
-                  <dl className="relative pl-16">
-                    <dt className="text-base font-semibold leading-7 text-gray-900">
+                  <div className="relative pl-16">
+                    <div className="text-base font-semibold leading-7 text-gray-900">
                       <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
                         <feature.icon
                           className="h-6 w-6 text-white"
                           aria-hidden="true"
                         />
                       </div>
-                      {feature.name}
-                    </dt>
-                    <dd className="mt-2 text-base leading-7 text-gray-600">
-                      {feature.description}
-                    </dd>
-                  </dl>
+                      {
+                        dictionary.about[
+                          feature.name as keyof typeof dictionary.about
+                        ]
+                      }
+                    </div>
+                    <div className="mt-2 text-base leading-7 text-gray-600">
+                      {
+                        dictionary.about[
+                          feature.description as keyof typeof dictionary.about
+                        ]
+                      }
+                    </div>
+                  </div>
                 </Link>
               ) : (
                 <div
                   key={feature.name}
                   className="border border-white rounded-lg p-4"
                 >
-                  <dl className="relative pl-16">
-                    <dt className="text-base font-semibold leading-7 text-gray-900">
+                  <div className="relative pl-16">
+                    <div className="text-base font-semibold leading-7 text-gray-900">
                       <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
                         <feature.icon
                           className="h-6 w-6 text-white"
                           aria-hidden="true"
                         />
                       </div>
-                      {feature.name}
-                    </dt>
-                    <dd className="mt-2 text-base leading-7 text-gray-600">
-                      {feature.description}
-                    </dd>
-                  </dl>
+                      {
+                        dictionary.about[
+                          feature.name as keyof typeof dictionary.about
+                        ]
+                      }
+                    </div>
+                    <div className="mt-2 text-base leading-7 text-gray-600">
+                      {
+                        dictionary.about[
+                          feature.description as keyof typeof dictionary.about
+                        ]
+                      }
+                    </div>
+                  </div>
                 </div>
               )
             )}
-          </dl>
+          </div>
         </div>
       </div>
     </div>

@@ -4,16 +4,35 @@ import CoverImage from "../previews/CoverImage";
 import Link from "next/link";
 import Date from "../previews/Date";
 import { socials } from "../Footer";
+import { convertIso } from "../../lib/utils";
+import { getDictionary } from "@/get-dictionary";
 
 export default async function CategoryLayout({
   category,
   title,
+  lang,
 }: {
   category: string;
   title: string;
+  lang: any;
 }) {
-  const posts = await getPosts(category);
-  const newposts = await getNewPosts(5);
+  const posts = await getPosts(category, convertIso(lang));
+  const newposts = await getNewPosts(5, convertIso(lang));
+  const dictionary = await getDictionary(lang);
+
+  switch (title) {
+    case "Broker Reviews":
+      title = dictionary.categories.learn;
+      break;
+    case "Trading Strategy":
+      title = dictionary.categories.strategies;
+      break;
+    case "Broker Reviews":
+      title = dictionary.categories.reviews;
+      break;
+    default:
+      break;
+  }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:mt-12">
@@ -22,11 +41,11 @@ export default async function CategoryLayout({
           {title}
         </h1>
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
-        <PostsList posts={posts} />
+        <PostsList posts={posts} message={dictionary.categories.noPosts} />
       </div>
       <div className="col-span-1">
         <h2 className="my-6 text-gray-800 text-2xl  font-bold tracking-tighter leading-tight md:leading-none mb-8 text-center">
-          Recent Articles
+          {dictionary.categories.recent}
         </h2>
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
         {/* Map newposts into a column of post previews with the coverImage on the left and the title and date on the right */}
@@ -77,14 +96,14 @@ export default async function CategoryLayout({
   );
 }
 
-async function getPosts(category: string) {
-  const MorePosts = await getMorePosts("", category, 20);
+async function getPosts(category: string, lang: string) {
+  const MorePosts = await getMorePosts("", category, 20, lang);
 
   return MorePosts;
 }
 
-async function getNewPosts(limit: number) {
-  const latestPosts = await getLatestPosts(limit);
+async function getNewPosts(limit: number, lang: string) {
+  const latestPosts = await getLatestPosts(limit, lang);
 
   return latestPosts;
 }

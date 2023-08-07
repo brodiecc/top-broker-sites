@@ -1,0 +1,35 @@
+{
+  "header": {
+    "topBrokerSites": "Top Broker Sites",
+    "openMainMenu": "Open main menu",
+    "closeMenu": "Close menu",
+    "compare": "Compare",
+    "learn": "Learn",
+    "brokerReviews": "Broker Reviews",
+    "tradingStrategies": "Trading Strategies"
+  },
+  "about": {
+    "titleTop": "Looking for a broker?",
+    "titleBottom": "Look no further.",
+    "description": "We help you navigate the complex world of online trading and investing. Get access to expert reviews and ratings of the top brokers in the industry.",
+    "learn": "Learn Trading",
+    "learnDescription": "Our educational resources will help you learn the basics of trading and investing, as well as advanced strategies to help you succeed.",
+    "brokerReviews": "Broker reviews",
+    "brokerReviewsDescription": "Our reviews provide valuable insights into brokers' features, trading platforms, account types, regulatory compliance, customer service, and more.",
+    "tradingStrategies": "Trading Strategies",
+    "tradingStrategiesDescription": "Discover a wide range of effective trading strategies that can enhance your investment decisions and maximize your potential for success",
+    "userInterface": "User-friendly interface",
+    "userInterfaceDescription": "Our website is designed to be user-friendly and easy to navigate, allowing you to quickly find the information you need."
+  },
+  "moreStories": {
+    "title": "The Latest",
+    "description": "New broker-related news made for you."
+  },
+  "categories": {
+    "learn": "Beginner Trading",
+    "reviews": "Broker Reviews",
+    "strategies": "Trading Strategies",
+    "recent": "Recent Articles",
+    "noPosts": "No posts available"
+  }
+}

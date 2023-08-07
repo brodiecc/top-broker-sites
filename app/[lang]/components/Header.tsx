@@ -5,15 +5,52 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimateUnderline } from "./LargeStyles";
+import LocaleSwitcher from "./LocaleSwitcher";
+
+interface HeaderDictionary {
+  [key: string]: string;
+  topBrokerSites: string;
+  openMainMenu: string;
+  closeMenu: string;
+  compare: string;
+  learn: string;
+  brokerReviews: string;
+  tradingStrategies: string;
+}
+
+const enDictionary: HeaderDictionary = {
+  topBrokerSites: "Top Broker Sites",
+  openMainMenu: "Open main menu",
+  closeMenu: "Close menu",
+  compare: "Compare",
+  learn: "Learn",
+  brokerReviews: "Broker Reviews",
+  tradingStrategies: "Trading Strategies",
+};
+
+const viDictionary: HeaderDictionary = {
+  topBrokerSites: "Các trang môi giới hàng đầu",
+  openMainMenu: "Mở menu chính",
+  closeMenu: "Đóng menu",
+  compare: "So sánh",
+  learn: "Học hỏi",
+  brokerReviews: "Đánh giá môi giới",
+  tradingStrategies: "Chiến lược giao dịch",
+};
 
 const navigation = [
   // { name: "About us", href: "/#about" },
-  { name: "Learn", href: "/category/beginner-trading" },
-  { name: "Broker Reviews", href: "/category/broker-review" },
-  { name: "Trading Strategies", href: "/category/trading-strategy" },
+  { name: "learn", href: "/category/beginner-trading" },
+  { name: "brokerReviews", href: "/category/broker-review" },
+  { name: "tradingStrategies", href: "/category/trading-strategy" },
 ];
 
-export default function Header() {
+export default function Header({ lang }: any) {
+  var dictionary = enDictionary;
+  if (lang === "vi") {
+    dictionary = viDictionary;
+  }
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -23,7 +60,7 @@ export default function Header() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center">
+          <Link href={`/${lang}`} className="-m-1.5 p-1.5 flex items-center">
             <Image
               src="/tbslogo.svg"
               alt=""
@@ -32,7 +69,7 @@ export default function Header() {
               className="h-8 w-8 mr-2"
             />
             <span className="font-semibold text-2xl tracking-tight text-gray-900">
-              Top Broker Sites
+              {dictionary.topBrokerSites}
             </span>
           </Link>
         </div>
@@ -42,7 +79,7 @@ export default function Header() {
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
             onClick={() => setMobileMenuOpen(true)}
           >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only">{dictionary.openMainMenu}</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
@@ -50,14 +87,15 @@ export default function Header() {
           {navigation.map((item) => (
             <Link
               key={item.name}
-              href={item.href}
+              href={`/${lang}${item.href}`}
               className={AnimateUnderline(
                 "text-md font-semibold leading-6 text-gray-700 after:bg-gray-700"
               )}
             >
-              {item.name}
+              {dictionary[item.name]}
             </Link>
           ))}
+          <LocaleSwitcher />
         </div>
         {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link

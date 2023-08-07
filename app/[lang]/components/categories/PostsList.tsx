@@ -4,7 +4,11 @@ import Link from "next/link";
 
 import CoverImage from "../previews/CoverImage";
 
-export default function PostsList({ posts }: any) {
+export default function PostsList({ posts, message }: any) {
+  if (posts.length === 0) {
+    return <div>{message}</div>;
+  }
+
   const firstPost = posts.shift();
   return (
     <div className="flex flex-col">

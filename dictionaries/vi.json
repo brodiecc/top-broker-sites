@@ -1,0 +1,35 @@
+{
+  "header": {
+    "topBrokerSites": "Các trang môi giới hàng đầu",
+    "openMainMenu": "Mở menu chính",
+    "closeMenu": "Đóng menu",
+    "compare": "So sánh",
+    "learn": "Học hỏi",
+    "brokerReviews": "Đánh giá môi giới",
+    "tradingStrategies": "Chiến lược giao dịch"
+  },
+  "about": {
+    "titleTop": "Bạn đang tìm kiếm một nhà môi giới?",
+    "titleBottom": "Đừng tìm kiếm xa hơn.",
+    "description": "Chúng tôi giúp bạn điều hướng trong thế giới phức tạp của giao dịch và đầu tư trực tuyến. Truy cập đánh giá và xếp hạng chuyên gia về các nhà môi giới hàng đầu trong ngành.",
+    "learn": "Học giao dịch",
+    "learnDescription": "Tài nguyên giáo dục của chúng tôi sẽ giúp bạn học những kiến thức cơ bản về giao dịch và đầu tư, cũng như các chiến lược tiên tiến giúp bạn thành công.",
+    "brokerReviews": "Đánh giá môi giới",
+    "brokerReviewsDescription": "Đánh giá của chúng tôi cung cấp thông tin quý giá về các tính năng của các nhà môi giới, nền tảng giao dịch, loại tài khoản, tuân thủ quy định, dịch vụ khách hàng và nhiều hơn thế nữa.",
+    "tradingStrategies": "Chiến lược giao dịch",
+    "tradingStrategiesDescription": "Khám phá một loạt các chiến lược giao dịch hiệu quả có thể nâng cao quyết định đầu tư của bạn và tối đa hóa tiềm năng thành công của bạn.",
+    "userInterface": "Giao diện thân thiện với người dùng",
+    "userInterfaceDescription": "Trang web của chúng tôi được thiết kế thân thiện với người dùng và dễ dàng điều hướng, cho phép bạn nhanh chóng tìm thấy thông tin bạn cần."
+  },
+  "moreStories": {
+    "title": "Mới nhất",
+    "description": "Tin tức mới liên quan đến môi giới dành cho bạn."
+  },
+  "categories": {
+    "learn": "Giao Dịch Cho Người Mới",
+    "reviews": "Đánh Giá Môi Giới",
+    "strategies": "Chiến Lược Giao Dịch",
+    "recent": "Bài Viết Gần Đây",
+    "noPosts": "Không có bài viết"
+  }
+}

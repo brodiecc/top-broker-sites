@@ -1,4 +1,4 @@
-import PostLayout from "../components/posts/PostLayout";
+import PostLayout from "./../components/posts/PostLayout";
 import { Metadata, ResolvingMetadata } from "next";
 import {
   getAllSlugs,
@@ -6,7 +6,8 @@ import {
   getMorePosts,
   getLatestPosts,
 } from "../lib/api";
-import SimilarStories from "../components/SimilarStories";
+import SimilarStories from "./../components/SimilarStories";
+import { convertIso } from "../lib/utils";
 
 export default async function Post({ params }: any) {
   const { post, posts } = await getPost({ params });
@@ -58,10 +59,13 @@ export async function generateStaticParams() {
 async function getPost({ params }: any) {
   const postData = await getMainPost(params?.slug);
 
+  const locale = params?.locale || "en"; // default to "en" if locale is not provided
+
   const postsData = await getMorePosts(
     params?.slug,
     postData.post.categories.edges[0].node.name,
-    3
+    3,
+    convertIso(locale)
   );
 
   return {
@@ -73,7 +77,7 @@ async function getPost({ params }: any) {
 export const dynamicParams = false;
 
 async function getPosts() {
-  const latestPosts = await getLatestPosts(3);
+  const latestPosts = await getLatestPosts(3, "English");
 
   return latestPosts;
 }

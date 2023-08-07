@@ -66,15 +66,14 @@ export async function getAllSlugs() {
   return data.posts;
 }
 
-// export async function getAllPostsForHome(preview: any) {
-export async function getLatestPosts(limit: number) {
+export async function getLatestPosts(limit: number, locale: string) {
   if (limit == null) {
     limit = 3;
   }
   const data = await fetchAPI(
     `
-    query AllPosts($limit: Int) {
-      posts(first: $limit, where: {orderby: {field: DATE, order: DESC}}) {
+    query AllPosts($limit: Int, $locale: String) {
+      posts(first: $limit, where: {orderby: {field: DATE, order: DESC}, tag: $locale}) {
         edges {
           node {
             title
@@ -114,6 +113,7 @@ export async function getLatestPosts(limit: number) {
     {
       variables: {
         limit: limit,
+        locale: locale,
       },
     }
   );
@@ -201,7 +201,8 @@ export async function getMainPost(slug: any) {
 export async function getMorePosts(
   slug: string,
   category: string,
-  howManyPosts: number
+  howManyPosts: number,
+  locale: string
 ) {
   const data = await fetchAPI(
     `
@@ -249,10 +250,10 @@ export async function getMorePosts(
         }
       }
     }
-    query PostsByCategory($categoryName: String!, $limit: Int!) {
+    query PostsByCategory($categoryName: String!, $limit: Int!, $locale: String) {
       posts(
         first: $limit
-        where: {orderby: {field: DATE, order: DESC}, categoryName: $categoryName}
+        where: {orderby: {field: DATE, order: DESC}, categoryName: $categoryName, tag: $locale}
       ) {
         edges {
           node {
@@ -266,6 +267,7 @@ export async function getMorePosts(
       variables: {
         categoryName: category,
         limit: howManyPosts,
+        locale: locale,
       },
     }
   );
