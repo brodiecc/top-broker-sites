@@ -23,7 +23,10 @@ export default function PostPreview({
   slug,
 }: PostPreviewProps) {
   return (
-    <article key={title} className="flex flex-col items-start">
+    <article
+      key={title}
+      className="flex flex-col items-start p-6 border-t-2 border-gray-600"
+    >
       <div className="relative w-full">
         {coverImage && (
           <CoverImage title={title} coverImage={coverImage} slug={slug} />

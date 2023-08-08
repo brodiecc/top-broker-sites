@@ -11,14 +11,15 @@ export default async function Home({ params }: { params: { lang: string } }) {
   return (
     <main>
       {/* <Hero /> */}
-      <About lang={params.lang} />
+
       <MoreStories posts={latestPosts} lang={params.lang} />
+      <About lang={params.lang} />
     </main>
   );
 }
 
 async function getPosts(lang: string) {
-  const latestPosts = await getLatestPosts(3, lang);
+  const latestPosts = await getLatestPosts(9, lang);
 
   return latestPosts;
 }
