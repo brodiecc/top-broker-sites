@@ -12,6 +12,8 @@ import { Locale } from "../../i18n-config";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const revalidate = 43200;
+
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
