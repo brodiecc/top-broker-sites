@@ -5,13 +5,14 @@ import { getLatestPosts } from "./lib/api";
 import { Metadata } from "next";
 import { convertIso } from "./lib/utils";
 import { getDictionary } from "@/get-dictionary";
+import Banner from "./components/Banner";
 
 export default async function Home({ params }: { params: { lang: string } }) {
   const latestPosts = await getPosts(convertIso(params.lang));
   return (
     <main>
       {/* <Hero /> */}
-
+      <Banner />
       <MoreStories posts={latestPosts} lang={params.lang} />
       <About lang={params.lang} />
     </main>
