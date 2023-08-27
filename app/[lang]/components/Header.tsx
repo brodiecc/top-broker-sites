@@ -123,8 +123,8 @@ export default function Header({ lang }: any) {
                 width={32}
                 className="mr-2 h-8 w-8"
               />
-              <span className="font-semibold text-lg tracking-tight">
-                Top Broker Sites
+              <span className="font-semibold text-2xl tracking-tight">
+                {dictionary.topBrokerSites}
               </span>
             </Link>
             <button
@@ -157,6 +157,7 @@ export default function Header({ lang }: any) {
                   Compare
                 </Link>
               </div> */}
+              <LocaleSwitcher />
             </div>
           </div>
         </Dialog.Panel>
