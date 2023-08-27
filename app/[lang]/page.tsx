@@ -12,7 +12,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
   return (
     <main>
       {/* <Hero /> */}
-      <Banner />
+      <Banner lang={params.lang} />
       <MoreStories posts={latestPosts} lang={params.lang} />
       <About lang={params.lang} />
     </main>

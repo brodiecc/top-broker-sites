@@ -35,6 +35,7 @@ export function middleware(request: NextRequest) {
       "/mantrading.jpeg",
       "/OGImage.png",
       "/tbslogo.svg",
+      "/hdbanner.jpg",
       // Your other files in `public`
     ].includes(pathname)
   )
