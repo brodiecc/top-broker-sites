@@ -2,6 +2,7 @@ import Image from "next/image";
 import bannerImage from "/public/hdbanner.jpg";
 import { AnimateUnderline } from "./LargeStyles";
 import { getDictionary } from "@/get-dictionary";
+import Link from "next/link";
 
 export default async function Banner({ lang }: any) {
   const dictionary = await getDictionary(lang);
@@ -14,13 +15,14 @@ export default async function Banner({ lang }: any) {
         <h2 className="text-4xl m-auto font-bold pt-4 sm:pt-0">
           {dictionary.banner.titleBottom}
         </h2>
-        <button
+        <Link
           className={AnimateUnderline(
             "hover:text-gray-300 text-lg md:text-2xl font-bold leading-6  after:bg-gray-300 m-auto pt-8"
           )}
+          href="https://go.td365.com/visit/?bta=35055&nci=5376"
         >
           {dictionary.banner.link}
-        </button>
+        </Link>
       </div>
       <Image
         src={bannerImage}
